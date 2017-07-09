@@ -108,8 +108,8 @@ update event model =
 
         Success ->
             ("success") ! []
-        GetSuccess modelx ->
-            ("get success : " ++ toString modelx) ! []
+        GetSuccess model_ ->
+            ("get success : " ++ toString model_) ! []
         KeysSuccess keys ->
             ("keys success : " ++ toString keys) ! []
 
