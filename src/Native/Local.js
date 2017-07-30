@@ -2,7 +2,7 @@
 //import Native.Scheduler //
 //import Native.Utils //
 
-var _JohnBugner$elm_storage$Native_Local = function() {
+var _kingsleyh$elm_storage$Native_Local = function() {
     function rawSet(value, key) {
     	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback) {
     		try {
@@ -30,15 +30,17 @@ var _JohnBugner$elm_storage$Native_Local = function() {
     	});
     }
 
-    var keys = _elm_lang$core$Native_Scheduler.nativeBinding(function(callback) {
-    	var keyList = _elm_lang$core$Native_List.Nil;
+    function keys() {
+        return _elm_lang$core$Native_Scheduler.nativeBinding(function (callback) {
+            var keyList = _elm_lang$core$Native_List.Nil;
 
-    	for (var i = window.localStorage.length; i > 0 ; --i) {
-    		keyList = _elm_lang$core$Native_List.Cons(window.localStorage.key(i - 1), keyList);
-    	}
+            for (var i = window.localStorage.length; i > 0; --i) {
+                keyList = _elm_lang$core$Native_List.Cons(window.localStorage.key(i - 1), keyList);
+            }
 
-    	callback(_elm_lang$core$Native_Scheduler.succeed(keyList));
-    });
+            callback(_elm_lang$core$Native_Scheduler.succeed(keyList));
+        });
+    }
 
     function remove(key) {
     	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback) {
@@ -48,11 +50,13 @@ var _JohnBugner$elm_storage$Native_Local = function() {
     	});
     }
 
-    var clear = _elm_lang$core$Native_Scheduler.nativeBinding(function(callback) {
-    	window.localStorage.clear();
+    function clear() {
+        return _elm_lang$core$Native_Scheduler.nativeBinding(function (callback) {
+            window.localStorage.clear();
 
-    	callback(_elm_lang$core$Native_Scheduler.succeed(_elm_lang$core$Native_Utils.Tuple0));
-    });
+            callback(_elm_lang$core$Native_Scheduler.succeed(_elm_lang$core$Native_Utils.Tuple0));
+        });
+    }
 
     return {
     	rawSet : F2(rawSet),
